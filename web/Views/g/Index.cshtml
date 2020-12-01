@@ -1,0 +1,326 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <link rel="stylesheet" type="text/css" href="~/code/mycss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/js.js"></script>
+  
+</head>
+<body ng-app="myApp">
+    <header>
+        <div class="row row-head">
+            <div class="col-3 logo">
+                <a href="Trangchu.html">
+                    <img src="~/code/images/anh-logo-shop-quan-ao_111916060.jpg" alt="Trang Chủ">
+                </a>
+            </div>
+            <div class="col-4 search">
+                <input type="text" name="search" placeholder="Search...">
+            </div>
+            <div class="col-5 dangnhap">
+                <p class="label">Đã có tài khoản</p>
+                <button>
+                    <a href="dangnhap.html">Đăng nhập</a>
+                </button>
+                <p class="label">Chưa có tài khoản</p>
+                <button>
+                    <a href="dangky.html">Đăng ký</a>
+                </button>
+            </div>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Giỏ Hàng</h5>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="cart-row">
+                        <span class="cart-item cart-header cart-column">Sản Phẩm</span>
+                        <span class="cart-price cart-header cart-column">Giá</span>
+                        <span class="cart-quantity cart-header cart-column">Số Lượng</span>
+                    </div>
+                    <div class="cart-items">
+
+                    </div>
+                    <div class="cart-total">
+                        <strong class="cart-total-title">Tổng Cộng:</strong>
+                        <span class="cart-total-price">0VNĐ</span>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close-footer">Đóng</button>
+                    <button type="button" class="btn btn-primary order">Thanh Toán</button>
+                </div>
+    </header>
+    <div ng-controller="loai" id="menu">
+        <ul>
+            <li>
+                <a href="#">Danh mục sản phẩm</a>
+                <ul class="sub-menu">
+                    <li ng-repeat="i in list"><a href="/g/loaisp#?!maloaisp={{i.maloaisanpham}}"> {{i.loaisanpham}}</a></li>
+
+                </ul>
+            </li>
+            <li><a href="#">Khuyến mãi</a></li>
+            <li><a href="#">Trả góp</a></li>
+            <li><a href="#">Liên Hệ</a></li>
+            <li><a href="#">Member Ship</a></li>
+            <li id="cart"><a aria-hidden="true" href="#">Giỏ hàng</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <div class="content">
+            <div class="row row-item" ng-controller="sp">
+                <div class="box-head">
+                    <ul class="pr_ul">
+                        <li class="item" id="hot">Sản phẩm hot</li>
+                        <li class="item" id="chay">Sản phẩm bán chạy</li>
+                        <li class="item" id="moi">Sản phẩm mới</li>
+                    </ul>
+                </div>
+                <div id="sp_hot">
+                    <ul  class="menu-product" id="product_hot">
+                      
+                        <li ng-repeat="i in list" class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/{{i.hinhanh}}" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">{{i.tensanpham}}</div>
+                                    <div class="info-fake">3.980.000 VNĐ</div>
+                                    <div class="info-price">{{i.gia | number }} VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                    
+                    </ul>
+                    <ul class="menu-product">
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/download11.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">áo dài đờn đi chơi dẽ thương</div>
+                                    <div class="info-fake">4.210.000 VNĐ</div>
+                                    <div class="info-price">3.578.500 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/download12.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">quần ngắn áo dài xịn xò</div>
+                                    <div class="info-fake">4.095.000 vnĐ</div>
+                                    <div class="info-price">3.480.750 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/images.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">thể thao vip</div>
+                                    <div class="info-fake">4.230.000 VNĐ</div>
+                                    <div class="info-price">3.595.000 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/images14.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">váy áo siêu phẩm</div>
+                                    <div class="info-fake">4.300.000 VNĐ</div>
+                                    <div class="info-price">3.655.000 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/images15.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">váy áo hàng hiệu</div>
+                                    <div class="info-fake">3.300.000 VNĐ</div>
+                                    <div class="info-price">2.805.000 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="menu-product">
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a href="E1802.html" class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/images16.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">váy áo đi chơi thanh lịch</div>
+                                    <div class="info-fake">1.465.000 VNĐ</div>
+                                    <div class="info-price">1.245.250 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/images17.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">áo thun FA mùa đông</div>
+                                    <div class="info-fake">1.465.000 VNĐ</div>
+                                    <div class="info-price">1.245.250 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/images18.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">váy ao thanh lịch nhưng màu đen</div>
+                                    <div class="info-fake">1.465.000 VNĐ</div>
+                                    <div class="info-price">1.245.250 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/sb_1603937231_179.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">Quần áo ngủ Sunfly</div>
+                                    <div class="info-fake">1.465.000 VNĐ</div>
+                                    <div class="info-price">1.245.250 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-product col-2-4">
+                            <div class="product-backdrop">
+                                <a class="backdrop_a">
+                                    <img src="~/code/images/anhquanao/sb_1603937257_811.jpg" class="product-img">
+                                </a>
+                                <span class="sale_per">15%</span>
+                            </div>
+                            <div class="product-info">
+                                <a>
+                                    <div class="info-name">Quần áo thể thao Sunfly</div>
+                                    <div class="info-fake">1.465.000 VNĐ</div>
+                                    <div class="info-price">1.245.250 VNĐ</div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="foot-cen row">
+            <div class="col-4">
+                <ul class="foot_ul">
+                    <li class="foot-adres">CÔNG TY TNHH SẢN XUẤT VÀ ĐẦU TƯ MINH PHONG</li>
+                    <li class="foot-adress">Địa chỉ: 113 Nguyễn Trãi, P.Thượng Đình, Q. Thanh Xuân, TP. Hà Nội</li>
+                    <li class="foot-adress">Điện thoại: 0246.260.5064</li>
+                    <li class="foot-adress">Hotline: 0962 701 701</li>
+                    <li class="foot-adress">Email: demxanh.com@gmail.com</li>
+                    <li class="foot-adress">Website: demxanh.com</li>
+                    <li class="foot-adress">Mã số thuế: 0106928824</li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <ul class="foot_ul">
+                    <li class="information">THÔNG TIN CÔNG TY</li>
+                    <li class="information_li">Giới thiệu</li>
+                    <li class="information_li">Đăng ký/ Đăng nhập</li>
+                    <li class="information_li">Tuyển dụng, việc làm</li>
+                    <li class="information_li">Thanh toán</li>
+                    <li class="information_li">Liên hệ</li>
+                    <li class="information_li">Đối tác - Đại lý</li>
+                    <li class="information_li">Xem bản mobile</li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <ul class="foot_ul">
+                    <li class="information">HỖ TRỢ KHÁCH HÀNG</li>
+                    <li class="information_li">Chính sách giao hàng</li>
+                    <li class="information_li">Chính sách đổi trả</li>
+                    <li class="information_li">Chính sách bảo mật</li>
+                    <li class="information_li">Chính sách bảo hành</li>
+                    <li class="information_li">Hướng dẫn mua hàng</li>
+                    <li class="information_li">Mua trả góp thẻ tín dụng</li>
+                    <li class="information_li">Bằng khen + Chứng nhận</li>
+                </ul>
+
+            </div>
+            <div class="col-2">
+                <ul class="foot_ul">
+                    <li class="information">TỔNG ĐÀI HỖ TRỢ</li>
+                    <li class="information_li"><i class="fas fa-phone-volume"></i>0962 701 701</li>
+                    <li class="information_li"><i class="fas fa-phone-volume"></i>0981 212 212</li>
+                    <li class="information_li"><i class="fas fa-phone-volume"></i>1800 6250 (0 đ)</li>
+                </ul>
+
+            </div>
+        </div>
+    </footer>
+    <script src="home.js"></script>
+</body>
+</html>
+
+
